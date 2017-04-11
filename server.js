@@ -4,6 +4,7 @@
 var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
+
 var Comment = require('./model/commentsModel');
 var secrets = require('./secrets');
 
@@ -17,9 +18,10 @@ var port =  3001;
 // db config
 mongoose.connect(secrets);
 
-// Configure the API to use bodyParser and look for JSON data in the request body
+// Configure the API to use bodyParser
 app.use (bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+// Look for JSON data in the request body
+app.use (bodyParser.json());
 
 // To prevent errors from Cross Origin Resource Sharing, set the headers to allow CORS w/ middleware
 app.use (function (req, res, next) {
